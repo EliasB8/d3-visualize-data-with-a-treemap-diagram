@@ -12,7 +12,7 @@ async function main() {
   // Creating color scheme
   const colors = d3.scaleOrdinal(d3.schemeSet2);
 
-  //   select svg
+  //   selecting our treemap svg
   const svg = d3.select("svg#treemap")
 
   //   Creating a tooltip
@@ -21,7 +21,7 @@ async function main() {
     .attr("class", "tooltip")
     .attr("id", "tooltip");
 
-  //   creating our root from the data
+  //   creating our treemap root from the data
   const root = d3.hierarchy(movies).sum(d => d.value);
 
   //   Accessing svg height and weight
@@ -46,8 +46,7 @@ async function main() {
       return 'translate(' + d.x0 + ',' + d.y0 + ')';
     });
 
-
-  //   Append rectangles
+  //   Appending rectangles
   cell.append("rect")
     .attr("width", d => d.x1 - d.x0)
     .attr("height", d => d.y1 - d.y0)
@@ -60,14 +59,14 @@ async function main() {
       tooltip.style("opacity", 0.9);
       tooltip.attr("data-value", d.data.value);
       tooltip.html("Name : " + d.data.name + "</br>" +
-        "Categoty : " + d.data.category + "</br>" +
+        "Category : " + d.data.category + "</br>" +
         "Value : " + d.data.value);
       tooltip.style("left", (event.pageX + 10) + "px");
       tooltip.style("top", (event.pageY - 28) + "px");
     })
     .on("mouseout", () => tooltip.style("opacity", 0));
 
-  //   Append texts  
+  //   Appending texts  
   cell.append('text')
     .attr('class', 'tile-text')
     .selectAll('tspan')
@@ -78,7 +77,7 @@ async function main() {
     .attr('y', (d, i) => 13 + i * 12)
     .text(d => d);
 
-  //   Create legend
+  //   Creating legend
   const {
     children: movieData
   } = movies;
@@ -87,9 +86,7 @@ async function main() {
   const legend = d3.select("svg#legend");
   const blockSize = 20;
 
-
-  //   Create rect blocks
-  //   Generate legend
+  //   Generating the legend
   legend.selectAll("rect")
     .data(categories)
     .enter()
@@ -113,8 +110,7 @@ async function main() {
     .attr("x", blockSize * 2.75)
     .attr("y", (d, i) => 25 + i * (blockSize + 15))
     .text(d => d)
-    .attr("fill", d => colors(d))
-
+    .attr("fill", d => colors(d));
 }
 
 main();
