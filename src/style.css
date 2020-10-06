@@ -2,8 +2,7 @@ body {
   padding: 0;
   margin: 0;
   background-color: #31112c;
-  font-family: 'PT Sans', sans-serif;
-}
+  font-family: 'PT Sans', sans-serif; }
 
 .container {
   display: flex;
@@ -11,23 +10,16 @@ body {
   align-items: center;
   text-align: center;
   margin: 2rem auto;
-  color: #686ee2;
-
-  #title {
-    margin: 0;
-  }
-
-  #treemap {
+  color: #686ee2; }
+  .container #title {
+    margin: 0; }
+  .container #treemap {
     border: 2px solid black;
     background-color: #6e6d6d;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5);
-  }
-
-  #legend {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.5); }
+  .container #legend {
     margin-top: 2rem;
-    background-color: #363636;
-  }
-}
+    background-color: #363636; }
 
 .tooltip {
   position: absolute;
@@ -36,16 +28,13 @@ body {
   padding: 0.5rem;
   z-index: 10;
   pointer-events: none;
-  border-radius: 5px;
-}
+  border-radius: 5px; }
 
 .tile-text {
   fill: white;
-  font-size: 13px;
-}
+  font-size: 13px; }
 
 .footer {
   color: #f4ebc1;
   text-align: center;
-  font-size: 1.35rem;
-}
+  font-size: 1.35rem; }
